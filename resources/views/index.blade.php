@@ -325,7 +325,7 @@
                         Sign up now to get the latest updates, join upcoming rides, and be part of an exciting community
                         of bikers!
                     </p>
-                    <a href="{{ config('app.url') }}/signup" class="btn btn-warning text-dark fs-5" target="_blank" rel="noopener noreferrer">Sign Up Now</a>
+                    <a href="{{ config('app.url') }}/login" class="btn btn-warning text-dark fs-5" target="_blank" rel="noopener noreferrer">Sign Up Now</a>
                 </div>
             </div>
         </div>

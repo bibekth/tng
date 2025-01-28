@@ -158,8 +158,8 @@
                             <td>
                                 <button class="btn btn-sm btn-secondary user-edit"
                                     data-user-id="{{ $user->id }}">Edit</button>
-                                <button class="btn btn-sm btn-danger user-delete"
-                                    data-user-id="{{ $user->id }}">Delete</button>
+                                {{-- <button class="btn btn-sm btn-danger user-delete"
+                                    data-user-id="{{ $user->id }}">Delete</button> --}}
                             </td>
                         </tr>
                         @endforeach
