@@ -34,6 +34,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="event_date" class="form-label">Event Date:</label>
+                        <input type="date" class="form-control" id="event_date" name="event_date"
+                            placeholder="Pick a date for the event">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="time" class="form-label">Starts at:</label>
+                        <input type="text" class="form-control" id="time" name="time"
+                            placeholder="Insert the time in 24-format (only hour)">
+                    </div>
+                </div>
                 <div class="row mb-3">
                     <div class="col-12">
                         <label for="description">Description:</label>

@@ -47,6 +47,8 @@ class EventController extends Controller
             'banner' => "required",
             'logo' => 'required',
             'description' => 'nullable',
+            'event_date' => 'required|date',
+            'time' => 'required|numeric|min:0|max:23',
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->errors());
@@ -68,6 +70,8 @@ class EventController extends Controller
                 'logo_image' => $logo_path,
                 'description' => $request->description,
                 'created_by' => $auth->id,
+                'event_date' => $request->event_date,
+                'start_at' => $request->time,
             ]);
             DB::commit();
             Session::flash('success',$request->name.' event has been created successfully.');
@@ -106,6 +110,8 @@ class EventController extends Controller
             'banner'=>'nullable',
             'logo'=>'nullable',
             'description'=>'nullable',
+            'event_date' => 'required|date',
+            'time' => 'required|numeric|min:0|max:23',
         ]);
         if($validator->fails()){
             Session::flash('error',$validator->errors());
@@ -136,6 +142,8 @@ class EventController extends Controller
                 'banner_image' => $banner_path,
                 'logo_image' => $logo_path,
                 'description' => $description,
+                'event_date' => $request->event_date,
+                'start_at' => $request->time,
             ]);
             DB::commit();
             Session::flash('success',$request->name.' event has been updated successfully');
