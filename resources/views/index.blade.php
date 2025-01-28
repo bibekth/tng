@@ -169,7 +169,7 @@
                         <!-- Service Card 2 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('logo.png') }}" class="card-img-top" alt="Custom Ride Planning">
+                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="card-img-top" alt="Custom Ride Planning">
                                 <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Custom Ride Planning</h5>
@@ -182,7 +182,7 @@
                         <!-- Service Card 3 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('logo.png') }}" class="card-img-top" alt="Community Events">
+                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="card-img-top" alt="Community Events">
                                 <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Community Events</h5>
