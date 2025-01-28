@@ -73,7 +73,7 @@
                     </form>
                 </div>
             </div>
-            <div class="contact-administrators p-5">
+            <div class="contact-administrators pt-5">
                 <span class="d-flex justify-content-center">Don't have a account? </span><span class="d-flex justify-content-center"> Contact administrators by clicking&nbsp; <a
                         href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank"
                         rel="noopener noreferrer"><i>here</i></a></span>
