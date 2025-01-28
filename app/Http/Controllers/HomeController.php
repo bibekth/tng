@@ -36,4 +36,8 @@ class HomeController extends Controller
     public function signup(){
         return redirect('/register');
     }
+
+    public function register(){
+        return redirect('/login');
+    }
 }
