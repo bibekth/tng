@@ -6,8 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/register', [App\Http\Controllers\HomeController::class, 'register']);
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/signup', [App\Http\Controllers\HomeController::class, 'signup'])->name('signup');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('index');
