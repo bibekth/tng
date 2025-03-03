@@ -37,7 +37,7 @@
 <body>
     <div class="container-fluid-none">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <div class="container-fluid">
+            <div class="container-fluid px-5">
                 <!-- Brand Name Section -->
                 <a class="navbar-brand brand-name" href="#">The Next Group</a>
 
