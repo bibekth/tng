@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid-none">
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container-fluid">
                 <!-- Brand Name Section -->
