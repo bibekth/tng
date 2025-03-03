@@ -169,7 +169,8 @@
                         <!-- Service Card 2 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="card-img-top" alt="Custom Ride Planning">
+                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="card-img-top"
+                                    alt="Custom Ride Planning">
                                 <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Custom Ride Planning</h5>
@@ -182,7 +183,8 @@
                         <!-- Service Card 3 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="card-img-top" alt="Community Events">
+                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="card-img-top"
+                                    alt="Community Events">
                                 <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Community Events</h5>
@@ -279,7 +281,8 @@
                         <!-- Facebook Link -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank"
+                                    rel="noopener noreferrer">
                                     <h1><i class="bi bi-facebook"></i></h1>
                                 </a>
                             </div>
@@ -289,7 +292,8 @@
                         <!-- Instagram Link with extra margin on mobile -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="https://www.instagram.com/tngenfieldersnepal/" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.instagram.com/tngenfieldersnepal/" target="_blank"
+                                    rel="noopener noreferrer">
                                     <h1><i class="bi bi-instagram"></i></h1>
                                 </a>
                             </div>
@@ -325,7 +329,8 @@
                         Sign up now to get the latest updates, join upcoming rides, and be part of an exciting community
                         of bikers!
                     </p>
-                    <a href="{{ config('app.url') }}/login" class="btn btn-warning text-dark fs-5" target="_blank" rel="noopener noreferrer">Sign Up Now</a>
+                    <a href="{{ config('app.url') }}/login" class="btn btn-warning text-dark fs-5" target="_blank"
+                        rel="noopener noreferrer">Sign Up Now</a>
                 </div>
             </div>
         </div>
@@ -336,13 +341,15 @@
                     <!-- Brand Name and Copyright -->
                     <div class="col-12">
                         <div class="brand-name fs-5">
-                            <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer">The Next Group</a>
+                            <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer">The Next
+                                Group</a>
                         </div>
                         <span class="d-block">
                             Copyright © 2025 All rights reserved
                         </span>
                         <span class="d-block">
-                            Powered by <a href="https://www.techenfield.com" target="_blank" rel="noopener noreferrer">TechEnfield</a>
+                            Powered by <a href="https://www.techenfield.com" target="_blank"
+                                rel="noopener noreferrer">TechEnfield</a>
                         </span>
                     </div>
                 </div>

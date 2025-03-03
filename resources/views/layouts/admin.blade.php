@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid-none">
         <div class="admin-left-section">
             @include('layouts.admin-left-section')
         </div>
