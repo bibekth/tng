@@ -25,11 +25,20 @@ class HomeController extends Controller
     public function index()
     {
         return redirect(route('admin.main.index'));
-        // return view('home');
     }
 
     public function welcome(Request $request){
-        $data['upcomingEvent'] = Event::where('event_date','>',today())->first();
+        $data['upcomingEvent'] = Event::where('event_date','>=',today()->format('Y-m-d'))->where('start_at','>',now()->format('H'))->first();
+        if($data['upcomingEvent'] !== null && $data['upcomingEvent']->start_at <= 12){
+            $data['start_at'] = $data['upcomingEvent']->start_at . ' am';
+        }elseif($data['upcomingEvent'] !== null && $data['upcomingEvent']->start_at > 12){
+            $data['start_at'] = ($data['upcomingEvent']->start_at - 12) . ' pm';
+        }
+        if(config('services.esewa.url') !== null){
+            $data['esewa_exist'] = true;
+        }else{
+            $data['esewa_exist'] = false;
+        }
         return view('index', $data);
     }
 

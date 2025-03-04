@@ -40,10 +40,15 @@
                         <input type="date" class="form-control" id="event_date" name="event_date"
                             placeholder="Pick a date for the event">
                     </div>
-                    <div class="mb-3 col-6">
+                    <div class="mb-3 col-4">
                         <label for="time" class="form-label">Starts at:</label>
                         <input type="text" class="form-control" id="time" name="time"
                             placeholder="Insert the time in 24-format (only hour)">
+                    </div>
+                    <div class="mb-3 col-2">
+                        <label for="time" class="form-label">Entry Fee:</label>
+                        <input type="text" class="form-control" id="fee" name="fee"
+                            placeholder="In Rupees">
                     </div>
                 </div>
                 <div class="row mb-3">

@@ -127,15 +127,113 @@
                         <h2>Upcoming Ride</h2>
                         <hr class="border w-25 border-warning border-3 mx-auto">
                         <p class="fs-3"><strong>{{ $upcomingEvent->title }}</strong></p>
-                        <p class="fs-5">{{ $upcomingEvent->description }}</p>
+                        <span class="fs-5">On <strong> {{ $upcomingEvent->event_date }}</strong> and starts at
+                            <strong>{{
+                                $start_at }}</strong></span>
+                        <p class="fs-5">For only Rs. <strong>{{ $upcomingEvent->fee }}</strong></p>
+                        <p id="event-description" class="fs-5"></p>
+                        @if($esewa_exist === true)
+                        <button class="btn btn-primary my-3" data-bs-toggle="modal"
+                            data-bs-target="#registerModal">Register For This Ride</button>
+                        @endif
+                    </div>
+                    <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="descriptionModalLabel">Full Description</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="overflow-y: auto;">
+                                    <p id="fullDescription" class="text-dark"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade text-dark" id="registerModal" data-bs-backdrop="static" tabindex="-1"
+                        aria-labelledby="registerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="registerModalLabel">Register <strong>{{
+                                            $upcomingEvent->title }}</strong> Ride</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form action="{{ route('event.pay') }}" method="post" class="">
+                                    <div class="modal-body" style="overflow-y: auto;">
+                                        @csrf
+                                        <input type="text" name="name" id="name" class="form-control mb-3"
+                                            placeholder="Your Name" required>
+                                        <input type="email" name="email" id="email" class="form-control mb-3"
+                                            placeholder="Your Email" required>
+                                        <input type="text" name="contact" id="contact" class="form-control mb-3"
+                                            placeholder="Your Phone Number" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <form action="{{ route('event.pay') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="event_id" value="{{ $upcomingEvent->id }}">
+                                            <input type="hidden" id="amount" name="amount"
+                                                value="{{ $upcomingEvent->fee }}" required>
+                                            <input type="hidden" id="tax_amount" name="tax_amount" value="10" required>
+                                            <input type="hidden" id="total_amount" name="total_amount"
+                                                value="{{ $upcomingEvent->fee + 10 }}" required>
+                                            <input type="hidden" id="transaction_uuid" name="transaction_uuid"
+                                                value="241028" required>
+                                            <input type="hidden" id="product_code" name="product_code" value="EPAYTEST"
+                                                required>
+                                            <input type="hidden" id="product_service_charge"
+                                                name="product_service_charge" value="0" required>
+                                            <input type="hidden" id="product_delivery_charge"
+                                                name="product_delivery_charge" value="0" required>
+                                            <input type="hidden" id="success_url" name="success_url"
+                                                value="https://developer.esewa.com.np/success" required>
+                                            <input type="hidden" id="failure_url" name="failure_url"
+                                                value="https://developer.esewa.com.np/failure" required>
+                                            <input type="hidden" id="signed_field_names" name="signed_field_names"
+                                                value="total_amount,transaction_uuid,product_code" required>
+                                            <input type="hidden" id="signature" name="signature"
+                                                value="i94zsd3oXF6ZsSr/kGqT4sSzYQzjj1W/waxjWyRwaME=" required>
+                                            {{-- <input value="Submit" type="submit"> --}}
+                                            <button type="submit" class="btn btn-primary">Proceed to payment</button>
+                                        </form>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Right Column: Event Banner Image -->
                 <div class="col-12 col-md-8 d-flex justify-content-center">
                     <img loading="lazy" src="{{ asset('storage'.$upcomingEvent->banner_image) }}" class="img-fluid"
-                        alt="">
+                        crossorigin="anonymous" alt="">
                 </div>
             </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    let paragraph = document.getElementById("event-description");
+                    let fullText = `{{ $upcomingEvent->description }}`.trim(); // Laravel dynamic content
+                    let words = fullText.split(" ");
+
+                    if (words.length > 50) {
+                        let shortText = words.slice(0, 50).join(" ");
+                        paragraph.innerHTML = `
+                            ${shortText}
+                            <span class="text-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#descriptionModal">... See more</span>
+                        `;
+
+                        // Set full description inside the modal
+                        document.getElementById("fullDescription").innerHTML = fullText;
+                    } else {
+                        paragraph.innerHTML = fullText; // Display full text if 100 words or less
+                    }
+                });
+            </script>
             @endif
         </div>
 
@@ -364,5 +462,25 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
 <script src="{{ asset('js/index.js') }}"></script>
+{{-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let paragraph = document.getElementById("event-description");
+        let fullText = `{{ $upcomingEvent->description }}`.trim(); // Laravel dynamic content
+        let words = fullText.split(" ");
+
+        if (words.length > 50) {
+            let shortText = words.slice(0, 50).join(" ");
+            paragraph.innerHTML = `
+                ${shortText}
+                <span class="text-primary" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#descriptionModal">... See more</span>
+            `;
+
+            // Set full description inside the modal
+            document.getElementById("fullDescription").innerHTML = fullText;
+        } else {
+            paragraph.innerHTML = fullText; // Display full text if 100 words or less
+        }
+    });
+</script> --}}
 
 </html>

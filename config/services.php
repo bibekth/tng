@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'esewa' => [
+        'url'=>env('ESEWA_API_URL',null),
+        'pay_url'=>env('ESEWA_PAY_URL'),
+        'failure_url'=>env('ESEWA_FAILURE_URL'),
+        'success_url'=>env('ESEWA_SUCCESS_URL'),
+        'secret_key'=>env('ESEWA_MERCHANT_SECRET_KEY'),
+    ],
+
 ];

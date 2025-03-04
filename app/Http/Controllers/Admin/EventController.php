@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\Participant;
+use App\Traits\EsewaTrait;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +14,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Zerkxubas\EsewaLaravel\Facades\Esewa;
 
 class EventController extends Controller
 {
+    use EsewaTrait;
     /**
      * Display a listing of the resource.
      */
@@ -49,6 +53,7 @@ class EventController extends Controller
             'description' => 'nullable',
             'event_date' => 'required|date',
             'time' => 'required|numeric|min:0|max:23',
+            'fee' => 'required|numeric',
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->errors());
@@ -72,6 +77,7 @@ class EventController extends Controller
                 'created_by' => $auth->id,
                 'event_date' => $request->event_date,
                 'start_at' => $request->time,
+                'fee' => $request->fee,
             ]);
             DB::commit();
             Session::flash('success',$request->name.' event has been created successfully.');
@@ -112,6 +118,7 @@ class EventController extends Controller
             'description'=>'nullable',
             'event_date' => 'required|date',
             'time' => 'required|numeric|min:0|max:23',
+            'fee' => 'required|numeric',
         ]);
         if($validator->fails()){
             Session::flash('error',$validator->errors());
@@ -119,7 +126,6 @@ class EventController extends Controller
         }
         try{
             DB::beginTransaction();
-            // $auth = Auth::user();
             $banner_path = $event->banner_image;
             $logo_path = $event->logo_image;
             $description = $event->description;
@@ -144,6 +150,7 @@ class EventController extends Controller
                 'description' => $description,
                 'event_date' => $request->event_date,
                 'start_at' => $request->time,
+                'fee' => $request->fee,
             ]);
             DB::commit();
             Session::flash('success',$request->name.' event has been updated successfully');
@@ -162,5 +169,28 @@ class EventController extends Controller
     {
         $event->delete();
         return response()->json('success',200);
+    }
+
+    public function pay(Request $request){
+        $validator = Validator::make($request->input(),[
+            'name'=>'required',
+            'email'=>'required',
+            'contact'=>'required',
+        ]);
+
+        if($validator->fails()){
+            Session::flash('error',$validator->errors());
+            return back();
+        }
+        $response = $this->epay(100,10,110,"EPAYTEST",0,0);
+        // dd($response->body());
+        if($response){
+            $Participant = Participant::create([
+                'event_id'=>$request->event_id,'name'=>$request->name,'email'=>$request->email,'contact'=>$request->contact,
+            ]);
+            return response()->json(['status'=>"success",'data'=>$Participant], 200);
+        }else{
+            return response()->json(['status'=>'error','data'=>'Payment failed'], 500);
+        }
     }
 }
