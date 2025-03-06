@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->ajax()){
+        if ($request->ajax()) {
             $event = Event::findOrFail($request->event_id);
             return response()->json($event, 200);
         }
@@ -80,7 +80,7 @@ class EventController extends Controller
                 'fee' => $request->fee,
             ]);
             DB::commit();
-            Session::flash('success',$request->name.' event has been created successfully.');
+            Session::flash('success', $request->name . ' event has been created successfully.');
             return back();
         } catch (Exception $e) {
             DB::rollBack();
@@ -110,34 +110,34 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $validator = Validator::make($request->all(),[
-            'name'=>'required',
-            'title'=>'required',
-            'banner'=>'nullable',
-            'logo'=>'nullable',
-            'description'=>'nullable',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'title' => 'required',
+            'banner' => 'nullable',
+            'logo' => 'nullable',
+            'description' => 'nullable',
             'event_date' => 'required|date',
             'time' => 'required|numeric|min:0|max:23',
             'fee' => 'required|numeric',
         ]);
-        if($validator->fails()){
-            Session::flash('error',$validator->errors());
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
             return back();
         }
-        try{
+        try {
             DB::beginTransaction();
             $banner_path = $event->banner_image;
             $logo_path = $event->logo_image;
             $description = $event->description;
-            if($request->description){
-                $description=$request->description;
+            if ($request->description) {
+                $description = $request->description;
             }
-            if($request->file('logo')){
+            if ($request->file('logo')) {
                 $logo_image = File::get($request->logo);
                 $logo_path = "/images/events/" . time() . $request->file('logo')->getClientOriginalName();
                 Storage::disk('public')->put($logo_path, $logo_image);
             }
-            if($request->file('banner')){
+            if ($request->file('banner')) {
                 $banner_image = File::get($request->banner);
                 $banner_path = "/images/events/" . time() . $request->file('banner')->getClientOriginalName();
                 Storage::disk('public')->put($banner_path, $banner_image);
@@ -153,11 +153,11 @@ class EventController extends Controller
                 'fee' => $request->fee,
             ]);
             DB::commit();
-            Session::flash('success',$request->name.' event has been updated successfully');
+            Session::flash('success', $request->name . ' event has been updated successfully');
             return back();
-        }catch(Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
-            Session::flash('error',$e->getMessage());
+            Session::flash('error', $e->getMessage());
             return back();
         }
     }
@@ -168,29 +168,35 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return response()->json('success',200);
+        return response()->json('success', 200);
     }
 
-    public function pay(Request $request){
-        $validator = Validator::make($request->input(),[
-            'name'=>'required',
-            'email'=>'required',
-            'contact'=>'required',
+    public function pay(Request $request)
+    {
+        $validator = Validator::make($request->input(), [
+            'name' => 'required',
+            'email' => 'required',
+            'contact' => 'required',
         ]);
 
-        if($validator->fails()){
-            Session::flash('error',$validator->errors());
+        if ($validator->fails()) {
+            Session::flash('error', $validator->errors());
             return back();
         }
-        $response = $this->epay(100,10,110,"EPAYTEST",0,0);
+        $now = time();
+        $response = $this->epay($now, 100, 10, 110, "EPAYTEST", 0, 0);
         // dd($response->body());
-        if($response){
+        if ($response) {
             $Participant = Participant::create([
-                'event_id'=>$request->event_id,'name'=>$request->name,'email'=>$request->email,'contact'=>$request->contact,
+                'event_id' => $request->event_id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'contact' => $request->contact,
+                'payment_id' => $now,
             ]);
-            return response()->json(['status'=>"success",'data'=>$Participant], 200);
-        }else{
-            return response()->json(['status'=>'error','data'=>'Payment failed'], 500);
+            return response()->json(['status' => "success", 'data' => $Participant], 200);
+        } else {
+            return response()->json(['status' => 'error', 'data' => 'Payment failed'], 500);
         }
     }
 }

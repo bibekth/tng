@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Http;
 
 trait EsewaTrait
 {
-    public function epay($amount, $taxAmount, $totalAmount, $productCode, $productServiceCharge, $productDeliveryCharge)
+    public function epay($time, $amount, $taxAmount, $totalAmount, $productCode, $productServiceCharge, $productDeliveryCharge)
     {
-        $uuid = time();
+        $uuid = $time;
         $merchantKey = config('services.esewa.secret_key');
         $message = "total_amount=$totalAmount,transaction_uuid=$uuid,product_code=$productCode";
         $signature = hash_hmac('sha256', $message, $merchantKey);
