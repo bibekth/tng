@@ -162,48 +162,134 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="{{ route('event.pay') }}" method="post" class="">
-                                    <div class="modal-body" style="overflow-y: auto;">
-                                        @csrf
-                                        <input type="text" name="name" id="name" class="form-control mb-3"
-                                            placeholder="Your Name" required>
-                                        <input type="email" name="email" id="email" class="form-control mb-3"
-                                            placeholder="Your Email" required>
-                                        <input type="text" name="contact" id="contact" class="form-control mb-3"
-                                            placeholder="Your Phone Number" required>
+                                <div class="modal-body">
+                                    <?php
+                                        $time = time();
+                                    ?>
+                                    <p class="fs-5">Your payment ID is <strong>{{ $time }}</strong></p>
+                                    <p class="fs-5">Please input the <strong> payment ID</strong> and <strong> event
+                                            name</strong> in remarks on payment.</p>
+                                    <p class="fs-6" style="text-decoration: underline; color: blue; cursor: pointer;"
+                                        data-bs-toggle="modal" data-bs-target="#registerExampleModal">
+                                        Click to view the example</p>
+                                    <div class="qr-for-payment d-flex justify-content-center">
+                                        <img src="{{ asset('assets/img/qr.jpg') }}" alt="" width="500" height="auto">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#formFillUpModal">Proceed for Form Fillup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade text-dark" id="registerExampleModal" tabindex="-1"
+                        aria-labelledby="registerExampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="registerExampleModalLabel">Example on how to submit the
+                                        payment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img src="{{ asset('assets/img/qr-example1.jpg') }}" alt="" width="380"
+                                                height="auto">
+                                        </div>
+                                        <div class="col-6">
+                                            <img src="{{ asset('assets/img/qr-example2.jpg') }}" alt="" width="380"
+                                                height="auto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade text-dark" id="formFillUpModal" data-bs-backdrop="static" tabindex="-1"
+                        aria-labelledby="formFillUpModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <form action="{{ route('event.pay') }}" method="post" class=""
+                                    enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="formFillUpModalLabel">Fill up this form for
+                                            <strong>{{
+                                                $upcomingEvent->title }}</strong> Ride
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-body" style="overflow-y: auto;">
+                                            @csrf
+                                            <input type="hidden" name="event_id" value="{{ $upcomingEvent->id }}">
+                                            <input type="text" name="payment_id" id="payment_id"
+                                                class="form-control mb-3" placeholder="Your Payment ID" required>
+                                            <input type="text" name="name" id="name" class="form-control mb-3"
+                                                placeholder="Your Name" required>
+                                            <input type="email" name="email" id="email" class="form-control mb-3"
+                                                placeholder="Your Email" required>
+                                            <input type="text" name="contact" id="contact" class="form-control mb-3"
+                                                placeholder="Your Phone Number" required>
+                                            <input type="file" name="image" id="image" class="form-control" required>
+                                            <span style="font-size: 14px;" class="mb-3 px-1">Upload the screenshot of
+                                                the payment here.</span>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('event.pay') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="event_id" value="{{ $upcomingEvent->id }}">
-                                            <input type="hidden" id="amount" name="amount"
-                                                value="{{ $upcomingEvent->fee }}" required>
-                                            <input type="hidden" id="tax_amount" name="tax_amount" value="10" required>
-                                            <input type="hidden" id="total_amount" name="total_amount"
-                                                value="{{ $upcomingEvent->fee + 10 }}" required>
-                                            <input type="hidden" id="transaction_uuid" name="transaction_uuid"
-                                                value="241028" required>
-                                            <input type="hidden" id="product_code" name="product_code" value="EPAYTEST"
-                                                required>
-                                            <input type="hidden" id="product_service_charge"
-                                                name="product_service_charge" value="0" required>
-                                            <input type="hidden" id="product_delivery_charge"
-                                                name="product_delivery_charge" value="0" required>
-                                            <input type="hidden" id="success_url" name="success_url"
-                                                value="https://developer.esewa.com.np/success" required>
-                                            <input type="hidden" id="failure_url" name="failure_url"
-                                                value="https://developer.esewa.com.np/failure" required>
-                                            <input type="hidden" id="signed_field_names" name="signed_field_names"
-                                                value="total_amount,transaction_uuid,product_code" required>
-                                            <input type="hidden" id="signature" name="signature"
-                                                value="i94zsd3oXF6ZsSr/kGqT4sSzYQzjj1W/waxjWyRwaME=" required>
-                                            {{-- <input value="Submit" type="submit"> --}}
-                                            <button type="submit" class="btn btn-primary">Proceed to payment</button>
-                                        </form>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @if(Session::has('success'))
+                                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                                    @endif
+
+                                    @if(Session::has('error'))
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @if(is_array(Session::get('error')))
+                                            @foreach (Session::get('error')->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                            @else
+                                            <li>{{ Session::get('error') }}</li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    @endif
+                                    {{-- {{ session('message') }} --}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -455,6 +541,14 @@
         </div>
 
     </div>
+    @if(Session::has('success') || Session::has('error'))
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var myModal = new bootstrap.Modal(document.getElementById('messageModal'));
+            myModal.show();
+        });
+    </script>
+    @endif
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

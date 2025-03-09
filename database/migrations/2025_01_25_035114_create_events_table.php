@@ -34,7 +34,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->index();
             $table->string('contact')->index();
-            $table->string('payment_id')->unique()->index();
+            $table->string('payment_id');
+            $table->string('image_path')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

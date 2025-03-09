@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Participant extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['event_id', 'name', 'email', 'contact','payment_id'];
+    protected $fillable = ['event_id', 'name', 'email', 'contact','payment_id','image_path','status'];
 
     public function event()
     {

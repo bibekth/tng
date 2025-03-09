@@ -3,7 +3,8 @@
 <aside class="">
     <div class="add-events-section">
         <div class="add-new mb-3">
-            <button class="btn btn-sm btn-primary" id="add-new-event-btn"><i class="bi bi-plus-circle-fill"></i><span> Add New</span></button>
+            <button class="btn btn-sm btn-primary" id="add-new-event-btn"><i class="bi bi-plus-circle-fill"></i><span>
+                    Add New</span></button>
         </div>
         <div class="add-events-form-section add-new-section" id="add-events-form-section">
             <form action="{{ route('admin.events.store') }}" class="form" method="POST" enctype="multipart/form-data">
@@ -47,8 +48,7 @@
                     </div>
                     <div class="mb-3 col-2">
                         <label for="time" class="form-label">Entry Fee:</label>
-                        <input type="text" class="form-control" id="fee" name="fee"
-                            placeholder="In Rupees">
+                        <input type="text" class="form-control" id="fee" name="fee" placeholder="In Rupees">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -89,14 +89,54 @@
                             <td>{{ $event->title }}</td>
                             <td>{{ $event->createdBy->name }}</td>
                             <td>
-                                <button class="btn btn-sm btn-secondary event-edit" data-event-id="{{ $event->id }}">Edit</button>
-                                <button class="btn btn-sm btn-danger event-delete" data-event-id="{{ $event->id }}">Delete</button>
+                                <button class="btn btn-sm btn-info manage-participants"
+                                    data-event-id="{{ $event->id }}">Manage Participants</button>
+                                <button class="btn btn-sm btn-secondary event-edit"
+                                    data-event-id="{{ $event->id }}">Edit</button>
+                                <button class="btn btn-sm btn-danger event-delete"
+                                    data-event-id="{{ $event->id }}">Delete</button>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+        </div>
+
+        <div class="mt-5" id="manage-participants-table">
+            <div class="d-flex justify-content-between px-2 mb-1">
+                <span class="">Participants of</span>
+                <button class="btn btn-sm btn-danger" id="close-manage-participants-table">Close</button>
+            </div>
+            <div class="table-section container-fluid">
+                <div class="table-responsive">
+                    <table class="table table-bordered caption-top table-sm table-hover datatable">
+                        <thead class="thead">
+                            <tr>
+                                <th>S.N.</th>
+                                <th>Payment ID</th>
+                                <th>Name</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </aside>

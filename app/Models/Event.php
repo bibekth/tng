@@ -25,4 +25,9 @@ class Event extends Model
     public function createdBy(){
         return $this->belongsTo(User::class,'created_by');
     }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 }

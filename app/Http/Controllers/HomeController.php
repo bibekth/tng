@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\Cache\NullStore;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,10 @@ class HomeController extends Controller
     }
 
     public function welcome(Request $request){
-        $data['upcomingEvent'] = Event::where('event_date','>=',today()->format('Y-m-d'))->where('start_at','>',now()->format('H'))->first();
+        $data['upcomingEvent'] = Event::where('event_date','>=',today()->format('Y-m-d'))->first();
+        if($data['upcomingEvent'] !== null &&$data['upcomingEvent']->event_date == today()->format('Y-m-d') && $data['upcomingEvent']->start_at <= now()->format('H')){
+            $data['upcomingEvent'] = null;
+        }
         if($data['upcomingEvent'] !== null && $data['upcomingEvent']->start_at <= 12){
             $data['start_at'] = $data['upcomingEvent']->start_at . ' am';
         }elseif($data['upcomingEvent'] !== null && $data['upcomingEvent']->start_at > 12){

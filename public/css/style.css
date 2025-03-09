@@ -59,6 +59,9 @@
 .add-new-section{
     display: none;
 }
+#manage-participants-table{
+    display: none;
+}
 .top-row-containers{
     margin: 0 0px;
     padding: 0 24px;

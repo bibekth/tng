@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ParticipationConfirmationMail;
 use App\Models\Event;
 use App\Models\Participant;
 use App\Traits\EsewaTrait;
@@ -11,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -25,7 +28,18 @@ class EventController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $event = Event::findOrFail($request->event_id);
+            if($request->query('participant_id')){
+                $participant = Participant::findOrFail($request->query('participant_id'));
+                if($participant->status == 0){
+                    $participant->status = 1;
+                    $participant->save();
+                }else{
+                    $participant->status = 0;
+                    $participant->save();
+                }
+                Mail::to($participant->email)->send(new ParticipationConfirmationMail($participant));
+            }
+            $event = Event::with('participants')->findOrFail($request->event_id);
             return response()->json($event, 200);
         }
         $data['events'] = Event::all();
@@ -175,28 +189,33 @@ class EventController extends Controller
     {
         $validator = Validator::make($request->input(), [
             'name' => 'required',
-            'email' => 'required',
-            'contact' => 'required',
+            'email' => 'required|email',
+            'contact' => 'required|max:10',
         ]);
 
         if ($validator->fails()) {
             Session::flash('error', $validator->errors());
             return back();
         }
-        $now = time();
-        $response = $this->epay($now, 100, 10, 110, "EPAYTEST", 0, 0);
-        // dd($response->body());
-        if ($response) {
+        try {
+            $image = File::get($request->image);
+            $path = "/images/events/participants/" . time() . $request->file('image')->getClientOriginalName();
+            Storage::disk('public')->put($path, $image);
             $Participant = Participant::create([
                 'event_id' => $request->event_id,
                 'name' => $request->name,
                 'email' => $request->email,
                 'contact' => $request->contact,
-                'payment_id' => $now,
+                'payment_id' => $request->payment_id,
+                'image_path' => $path,
             ]);
-            return response()->json(['status' => "success", 'data' => $Participant], 200);
-        } else {
-            return response()->json(['status' => 'error', 'data' => 'Payment failed'], 500);
+            Session::flash('success','Your form has been uploaded, please wait for the confirmation by the Admins!');
+            return redirect('/');
+
+        } catch (Exception $e) {
+            Log::error('error on pay: ' . $e->getMessage());
+            Session::flash('error',$e->getMessage());
+            return redirect('/');
         }
     }
 }
