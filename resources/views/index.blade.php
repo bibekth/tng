@@ -163,10 +163,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <?php
-                                        $time = time();
-                                    ?>
-                                    <p class="fs-5">Your payment ID is <strong>{{ $time }}</strong></p>
+                                    <p class="fs-5">Your payment ID is <strong>{{ $payment_id }}</strong></p>
                                     <p class="fs-5">Please input the <strong> payment ID</strong> and <strong> event
                                             name</strong> in remarks on payment.</p>
                                     <p class="fs-6" style="text-decoration: underline; color: blue; cursor: pointer;"
