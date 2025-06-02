@@ -462,7 +462,7 @@
                         <!-- Facebook Link -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank"
+                                <a href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank" aria-label="Join our Facebook page"
                                     rel="noopener noreferrer">
                                     <h1><i class="bi bi-facebook"></i></h1>
                                 </a>
@@ -473,7 +473,7 @@
                         <!-- Instagram Link with extra margin on mobile -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="https://www.instagram.com/tngenfieldersnepal/" target="_blank"
+                                <a href="https://www.instagram.com/tngenfieldersnepal/" target="_blank" aria-label="Join our Instagram page"
                                     rel="noopener noreferrer">
                                     <h1><i class="bi bi-instagram"></i></h1>
                                 </a>
@@ -484,7 +484,7 @@
                         <!-- Email Link -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="mailto:{{ config('app.email') }}">
+                                <a href="mailto:{{ config('app.email') }}" aria-label="Mail us at {{ config('app.email') }}">
                                     <h1><i class="bi bi-envelope-at"></i></h1>
                                 </a>
                             </div>
@@ -494,7 +494,7 @@
                         <!-- Website Link -->
                         <div class="col-12 col-md-3 mb-4 mb-md-0">
                             <div class="d-flex justify-content-center">
-                                <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer">
+                                <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer" aria-label="Visit our website">
                                     <h1><i class="bi bi-globe2"></i></h1>
                                 </a>
                             </div>
@@ -510,7 +510,7 @@
                         Sign up now to get the latest updates, join upcoming rides, and be part of an exciting community
                         of bikers!
                     </p>
-                    <a href="{{ config('app.url') }}/login" class="btn btn-warning text-dark fs-5" target="_blank"
+                    <a href="{{ config('app.url') }}/login" class="btn btn-warning text-dark fs-5" target="_blank" aria-label="Sign Up now"
                         rel="noopener noreferrer">Sign Up Now</a>
                 </div>
             </div>
@@ -522,14 +522,14 @@
                     <!-- Brand Name and Copyright -->
                     <div class="col-12">
                         <div class="brand-name fs-5">
-                            <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer">The Next
+                            <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer" aria-label="The Next Group">The Next
                                 Group</a>
                         </div>
                         <span class="d-block">
                             Copyright © 2025 All rights reserved
                         </span>
                         <span class="d-block">
-                            Powered by <a href="https://www.techenfield.com" target="_blank"
+                            Powered by <a href="https://www.techenfield.com" target="_blank" aria-label="Tech Enfield - We take the tech upto your work field"
                                 rel="noopener noreferrer">TechEnfield</a>
                         </span>
                     </div>
