@@ -337,7 +337,7 @@
                         <!-- Service Card 1 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/merchant.jpg') }}" class="card-img-top" width="auto" height="auto"
+                                <img src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Guided Bike Rides"> <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Guided Bike Rides</h5>
@@ -350,7 +350,7 @@
                         <!-- Service Card 2 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="card-img-top" width="auto" height="auto"
+                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="img-fluid card-img-top"
                                     alt="Custom Ride Planning">
                                 <!-- Image in card -->
                                 <div class="card-body">
@@ -364,7 +364,7 @@
                         <!-- Service Card 3 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="card-img-top" width="auto" height="auto"
+                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="img-fluid card-img-top" 
                                     alt="Community Events">
                                 <!-- Image in card -->
                                 <div class="card-body">
@@ -396,7 +396,7 @@
                             <p class="card-text">TnG's bike rides are simply outstanding! Every ride is well-planned and
                                 filled with excitement. It's a great experience to join them on the road.</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/tanjish_thapa.jpg') }}" class="card-img-top" width="auto" height="auto"
+                        <img loading="lazy" src="{{ asset('assets/img/tanjish_thapa.jpg') }}" class="img-fluid card-img-top"
                             alt="Tanjish Thapa Magar">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/tanjish.magar">Tanjish Thapa Magar</a>
@@ -410,7 +410,7 @@
                             <p class="card-text">The Next Group's events are the highlight of my month. It's a perfect
                                 way to meet new people and explore new trails.</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/janjeer_thapa.jpg') }}" class="card-img-top" width="auto" height="auto"
+                        <img loading="lazy" src="{{ asset('assets/img/janjeer_thapa.jpg') }}" class="img-fluid card-img-top"
                             alt="Janjeer Thapa">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/janjeer1">Janjeer Thapa</a>
@@ -424,7 +424,7 @@
                             <p class="card-text">From the organization to the execution, everything is top-notch. Highly
                                 recommend TnG for anyone who loves biking!</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/bikal_roka.jpg') }}" class="card-img-top" width="auto" height="auto"
+                        <img loading="lazy" src="{{ asset('assets/img/bikal_roka.jpg') }}" class="img-fluid card-img-top"
                             alt="Bikal Roka">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/profile.php?id=100083533886980">Bikal Roka Magar</a>
