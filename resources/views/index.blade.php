@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="{{ config('app.name', 'TnG - The Next Group') }}">
     <meta name="author" content="{{ config('app.admin') }}">
-    <meta name="keyword" content="tng, TnG, TNG, The Next Group">
+    <meta name="keyword" content="tng, The Next Group, tng enfielders">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:title" content="The Next Group - TnG">
     <meta property="og:description" content="Join TnG for exciting bike rides and unforgettable experiences.">
@@ -84,7 +84,7 @@
                 </div>
 
                 <!-- Video Section -->
-                <video id="intro_video" src="{{ asset('assets/vid/intro.mp4') }}" class="w-100 h-100 object-fit-cover"
+                <video id="intro_video" src="{{ asset('assets/vid/intro.mp4') }}" class="w-100 h-100 object-fit-cover" width="300" height="400"
                     autoplay muted loop playsinline></video>
             </div>
         </div>
@@ -95,7 +95,7 @@
             <div class="row g-2 m-md-5 p-3 p-md-5">
                 <!-- Left Column: Image -->
                 <div class="col-12 col-md-4">
-                    <img loading="lazy" src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid rounded"
+                    <img loading="lazy" src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid rounded" width="300" height="400"
                         alt="The Next Group">
                 </div>
                 <!-- Right Column: Text Content -->
@@ -170,7 +170,7 @@
                                         data-bs-toggle="modal" data-bs-target="#registerExampleModal">
                                         Click to view the example</p>
                                     <div class="qr-for-payment d-flex justify-content-center">
-                                        <img src="{{ asset('assets/img/qr.jpg') }}" alt="" width="500" height="auto">
+                                        <img loading="lazy" src="{{ asset('assets/img/qr.jpg') }}" alt="qr code" width="500" height="auto">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -196,11 +196,11 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-6">
-                                            <img src="{{ asset('assets/img/qr-example1.jpg') }}" alt="" width="380"
+                                            <img loading="lazy" src="{{ asset('assets/img/qr-example1.jpg') }}" alt="" width="380"
                                                 height="auto">
                                         </div>
                                         <div class="col-6">
-                                            <img src="{{ asset('assets/img/qr-example2.jpg') }}" alt="" width="380"
+                                            <img loading="lazy" src="{{ asset('assets/img/qr-example2.jpg') }}" alt="" width="380"
                                                 height="auto">
                                         </div>
                                     </div>
@@ -337,7 +337,7 @@
                         <!-- Service Card 1 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
+                                <img loading="lazy" src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Guided Bike Rides"> <!-- Image in card -->
                                 <div class="card-body">
                                     <h5 class="card-title">Guided Bike Rides</h5>
@@ -350,7 +350,7 @@
                         <!-- Service Card 2 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="img-fluid card-img-top"
+                                <img loading="lazy" src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Custom Ride Planning">
                                 <!-- Image in card -->
                                 <div class="card-body">
@@ -364,7 +364,7 @@
                         <!-- Service Card 3 -->
                         <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
                             <div class="card border-0 rounded">
-                                <img src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="img-fluid card-img-top" 
+                                <img loading="lazy" src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Community Events">
                                 <!-- Image in card -->
                                 <div class="card-body">
@@ -396,7 +396,7 @@
                             <p class="card-text">TnG's bike rides are simply outstanding! Every ride is well-planned and
                                 filled with excitement. It's a great experience to join them on the road.</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/tanjish_thapa.jpg') }}" class="img-fluid card-img-top"
+                        <img loading="lazy" src="{{ asset('assets/img/tanjish_thapa.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                             alt="Tanjish Thapa Magar">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/tanjish.magar">Tanjish Thapa Magar</a>
@@ -410,7 +410,7 @@
                             <p class="card-text">The Next Group's events are the highlight of my month. It's a perfect
                                 way to meet new people and explore new trails.</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/janjeer_thapa.jpg') }}" class="img-fluid card-img-top"
+                        <img loading="lazy" src="{{ asset('assets/img/janjeer_thapa.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                             alt="Janjeer Thapa">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/janjeer1">Janjeer Thapa</a>
@@ -424,7 +424,7 @@
                             <p class="card-text">From the organization to the execution, everything is top-notch. Highly
                                 recommend TnG for anyone who loves biking!</p>
                         </div>
-                        <img loading="lazy" src="{{ asset('assets/img/bikal_roka.jpg') }}" class="img-fluid card-img-top"
+                        <img loading="lazy" src="{{ asset('assets/img/bikal_roka.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                             alt="Bikal Roka">
                         <a class="ms-3 mt-2 mb-2" target="_blank" rel="noopener noreferrer"
                             href="https://www.facebook.com/profile.php?id=100083533886980">Bikal Roka Magar</a>
