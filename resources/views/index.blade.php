@@ -32,7 +32,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.1/css/dataTables.dataTables.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 
 <body>
@@ -75,7 +74,7 @@
         <div id="home">
             <div class="intro-video-section position-relative mb-5">
                 <!-- Container for text content, positioned in the center -->
-                <div class="container position-absolute top-50 start-50 translate-middle ps-3 pe-3" data-aos="fade-up" data-aos-duration="1000">
+                <div class="container position-absolute top-50 start-50 translate-middle ps-3 pe-3">
                     <div class="p-4 text-center text-white">
                         <h2 class="fw-bold fs-4 fs-md-5">Join the Adventure with</h2>
                         <h2 class="fw-bold fs-4 fs-md-5">TnG</h2>
@@ -95,12 +94,12 @@
             <!-- About Section -->
             <div class="row g-2 m-md-5 p-3 p-md-5">
                 <!-- Left Column: Image -->
-                <div class="col-12 col-md-4" data-aos="fade-right" data-aos-duration="1000">
+                <div class="col-12 col-md-4">
                     <img loading="lazy" src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid rounded" width="300" height="400"
                         alt="The Next Group">
                 </div>
                 <!-- Right Column: Text Content -->
-                <div class="col-12 col-md-8 d-flex justify-content-center ps-md-4 pe-md-4" data-aos="fade-left" data-aos-duration="1000">
+                <div class="col-12 col-md-8 d-flex justify-content-center ps-md-4 pe-md-4">
                     <div class="align-content-center bg-dark text-white ps-3 pe-3 w-100 rounded">
                         <div class="about-title d-flex justify-content-center mb-4">
                             <h2>About The Next Group</h2>
@@ -123,7 +122,7 @@
             @else
             <div class="row mt-5 mb-5 g-0 bg-dark">
                 <!-- Left Column: Upcoming Event Details -->
-                <div class="col-12 col-md-4 d-flex justify-content-center text-white align-items-center pt-5" data-aos="fade-right" data-aos-duration="1000">
+                <div class="col-12 col-md-4 d-flex justify-content-center text-white align-items-center pt-5">
                     <div class="w-75 text-center">
                         <h2>Upcoming Ride</h2>
                         <hr class="border w-25 border-warning border-3 mx-auto">
@@ -134,7 +133,7 @@
                         <p class="fs-5">For only Rs. <strong>{{ $upcomingEvent->fee }}</strong></p>
                         <p id="event-description" class="fs-5"></p>
                         @if($esewa_exist === true)
-                        <button class="btn btn-warning my-3" data-bs-toggle="modal"
+                        <button class="btn btn-primary my-3" data-bs-toggle="modal"
                             data-bs-target="#registerModal">Register For This Ride</button>
                         @endif
                     </div>
@@ -282,6 +281,7 @@
                                         </ul>
                                     </div>
                                     @endif
+                                    {{-- {{ session('message') }} --}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -292,7 +292,7 @@
                     </div>
                 </div>
                 <!-- Right Column: Event Banner Image -->
-                <div class="col-12 col-md-8 d-flex justify-content-center" data-aos="fade-left" data-aos-duration="1000">
+                <div class="col-12 col-md-8 d-flex justify-content-center">
                     <img loading="lazy" src="{{ asset('storage'.$upcomingEvent->banner_image) }}" class="img-fluid"
                         crossorigin="anonymous" alt="">
                 </div>
@@ -323,7 +323,7 @@
         <div id="service" class="m-5 p-3 p-md-5">
             <!-- Reduced padding for mobile screens -->
             <!-- Service Title -->
-            <div class="service-title d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1000">
+            <div class="service-title d-flex justify-content-center">
                 <div class="">
                     <h2>Services</h2>
                     <hr class="border w-100 border-warning border-3 mb-5">
@@ -335,8 +335,8 @@
                 <div class="w-100 w-md-75">
                     <div class="row g-3">
                         <!-- Service Card 1 -->
-                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                            <div class="card border-0 rounded service-card-hover">
+                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
+                            <div class="card border-0 rounded">
                                 <img loading="lazy" src="{{ asset('assets/img/merchant.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Guided Bike Rides"> <!-- Image in card -->
                                 <div class="card-body">
@@ -348,8 +348,8 @@
                         </div>
 
                         <!-- Service Card 2 -->
-                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                            <div class="card border-0 rounded service-card-hover">
+                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
+                            <div class="card border-0 rounded">
                                 <img loading="lazy" src="{{ asset('assets/img/custom_ride-plan.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Custom Ride Planning">
                                 <!-- Image in card -->
@@ -362,8 +362,8 @@
                         </div>
 
                         <!-- Service Card 3 -->
-                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                            <div class="card border-0 rounded service-card-hover">
+                        <div class="col-12 col-md-4 pe-md-5 ps-md-5 mb-3 mb-md-0">
+                            <div class="card border-0 rounded">
                                 <img loading="lazy" src="{{ asset('assets/img/logo_bg_black.jpg') }}" class="img-fluid card-img-top" width="300" height="400"
                                     alt="Community Events">
                                 <!-- Image in card -->
@@ -380,7 +380,7 @@
         </div>
 
         <div id="testimonial" class="bg-dark text-white pt-5 pb-5">
-            <div class="testimonial-title d-flex justify-content-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+            <div class="testimonial-title d-flex justify-content-center mb-5">
                 <div class="">
                     <h2>Testimonials</h2>
                     <hr class="border w-100 border-warning border-3">
@@ -390,8 +390,8 @@
             <!-- Testimonials Row -->
             <div class="row w-75 mx-auto">
                 <!-- Testimonial 1 -->
-                <div class="col-12 col-md-4 d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-                    <div class="card testimonial-card-hover" style="width: 18rem;">
+                <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <p class="card-text">TnG's bike rides are simply outstanding! Every ride is well-planned and
                                 filled with excitement. It's a great experience to join them on the road.</p>
@@ -404,8 +404,8 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="col-12 col-md-4 d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="card testimonial-card-hover" style="width: 18rem;">
+                <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <p class="card-text">The Next Group's events are the highlight of my month. It's a perfect
                                 way to meet new people and explore new trails.</p>
@@ -418,8 +418,8 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="col-12 col-md-4 d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                    <div class="card testimonial-card-hover" style="width: 18rem;">
+                <div class="col-12 col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <p class="card-text">From the organization to the execution, everything is top-notch. Highly
                                 recommend TnG for anyone who loves biking!</p>
@@ -435,7 +435,7 @@
 
         <div id="join_us" class="pt-5 pb-5">
             <div class="join_us-section ps-4 pe-4">
-                <div class="join_us-title d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1000">
+                <div class="join_us-title d-flex justify-content-center">
                     <div>
                         <h2>Join Us</h2>
                         <hr class="border w-100 border-warning border-3">
@@ -443,7 +443,7 @@
                 </div>
 
                 <!-- Join Us Description -->
-                <div class="join_us-description text-center mb-5 px-0 px-md-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                <div class="join_us-description text-center mb-5 px-0 px-md-5">
                     <p class="fs-5">
                         At TnG, we believe in building a strong community of passionate individuals who love biking,
                         adventure, and exploring new trails. By joining us, you become part of an exciting journey
@@ -460,8 +460,8 @@
                 <div class="join_us-contents p-md-3">
                     <div class="row text-center">
                         <!-- Facebook Link -->
-                        <div class="col-12 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                            <div class="d-flex justify-content-center social-icon-hover">
+                        <div class="col-12 col-md-3 mb-4 mb-md-0">
+                            <div class="d-flex justify-content-center">
                                 <a href="https://www.facebook.com/profile.php?id=61558305204630" target="_blank" aria-label="Join our Facebook page"
                                     rel="noopener noreferrer">
                                     <h1><i class="bi bi-facebook"></i></h1>
@@ -471,8 +471,8 @@
                         </div>
 
                         <!-- Instagram Link with extra margin on mobile -->
-                        <div class="col-12 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                            <div class="d-flex justify-content-center social-icon-hover">
+                        <div class="col-12 col-md-3 mb-4 mb-md-0">
+                            <div class="d-flex justify-content-center">
                                 <a href="https://www.instagram.com/tngenfieldersnepal/" target="_blank" aria-label="Join our Instagram page"
                                     rel="noopener noreferrer">
                                     <h1><i class="bi bi-instagram"></i></h1>
@@ -482,8 +482,8 @@
                         </div>
 
                         <!-- Email Link -->
-                        <div class="col-12 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                            <div class="d-flex justify-content-center social-icon-hover">
+                        <div class="col-12 col-md-3 mb-4 mb-md-0">
+                            <div class="d-flex justify-content-center">
                                 <a href="mailto:{{ config('app.email') }}" aria-label="Mail us at {{ config('app.email') }}">
                                     <h1><i class="bi bi-envelope-at"></i></h1>
                                 </a>
@@ -492,8 +492,8 @@
                         </div>
 
                         <!-- Website Link -->
-                        <div class="col-12 col-md-3 mb-4 mb-md-0" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                            <div class="d-flex justify-content-center social-icon-hover">
+                        <div class="col-12 col-md-3 mb-4 mb-md-0">
+                            <div class="d-flex justify-content-center">
                                 <a href="{{ config('app.url') }}" target="_blank" rel="noopener noreferrer" aria-label="Visit our website">
                                     <h1><i class="bi bi-globe2"></i></h1>
                                 </a>
@@ -504,7 +504,7 @@
                 </div>
 
                 <!-- Call-to-Action Section -->
-                <div class="call-to-action text-center mt-5" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                <div class="call-to-action text-center mt-5">
                     <h3>Ready to Join the Adventure?</h3>
                     <p class="fs-5 mb-4">
                         Sign up now to get the latest updates, join upcoming rides, and be part of an exciting community
@@ -552,16 +552,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
+<script src="{{ asset('js/index.js') }}"></script>
+{{-- <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true, // Only animate once
-            mirror: false, // Do not animate on scrolling up
-        });
-
         let paragraph = document.getElementById("event-description");
         let fullText = `{{ $upcomingEvent->description }}`.trim(); // Laravel dynamic content
         let words = fullText.split(" ");
@@ -578,46 +571,7 @@
         } else {
             paragraph.innerHTML = fullText; // Display full text if 100 words or less
         }
-
-        // Add hover effects to service cards
-        document.querySelectorAll('.service-card-hover').forEach(card => {
-            card.style.transition = 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out';
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-5px)';
-                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = 'none';
-            });
-        });
-
-        // Add hover effects to testimonial cards
-        document.querySelectorAll('.testimonial-card-hover').forEach(card => {
-            card.style.transition = 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out';
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-5px)';
-                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = 'none';
-            });
-        });
-
-        // Add hover effects to social icons
-        document.querySelectorAll('.social-icon-hover a').forEach(iconLink => {
-            iconLink.style.transition = 'transform 0.3s ease-in-out, color 0.3s ease-in-out';
-            iconLink.addEventListener('mouseenter', () => {
-                iconLink.style.transform = 'scale(1.1)';
-                iconLink.style.color = '#ffc107'; /* Warning color from Bootstrap */
-            });
-            iconLink.addEventListener('mouseleave', () => {
-                iconLink.style.transform = 'scale(1)';
-                iconLink.style.color = 'inherit'; /* Revert to default color */
-            });
-        });
     });
-</script>
+</script> --}}
 
 </html>
